@@ -4,8 +4,9 @@ author: "Verity Elliott"
 date: "01_14_2026"
 output: 
   html_document: 
-    fig_height: 4
-    fig_width: 9
+    fig_height: 8
+    fig_width: 8
+    theme: sandstone
 ---
 
 ## Load packages and data
