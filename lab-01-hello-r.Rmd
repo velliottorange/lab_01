@@ -24,26 +24,52 @@ datasaurus_dozen has 1846 rows and 3 columns: dataset, x and y.
 
 ### Exercise 2
 
+Plot chunk:
+
+```{r plot-dino}
+# Filter the datasaurus_dozen dataset for the dino dataset
+dino_data <- datasaurus_dozen %>%
+  filter(dataset == "dino")
+
+# Plot y vs x
+ggplot(dino_data, aes(x = x, y = y)) +
+  geom_point()
+```
+
+Correlation chunk:
+
+```{r cor-dino}
+# Calculate the Pearson correlation coefficient between x and y
+dino_data %>%
+  summarize(r = cor(x, y))
+```
+
 The Pearson correlation coefficient between x and y for the dino dataset is approximately -0.06, which is near zero. This indicates that there is essentially no linear relationship between x and y. This makes sense because correlations measure linear relationships, not the "cool-ness" of the shape datapoints make. 
 
 ### Exercise 3
 
-This is your turn to write the code and narrative for the star dataset. Follow the same steps as above to complete the analysis. Don't forget to label your chunks appropriately!
-
-Note that the R chunks are labeled with `plot-star` and `cor-star` to provide spaces to place the code for plotting and calculating the correlation coefficient.
-To finish, clean up the narrative by removing these instructions.
+Plot chunk:
 
 ```{r plot-star}
 
+star_data <- datasaurus_dozen %>%
+  filter(dataset == "star")
+
+ggplot(star_data, aes(x = x, y = y)) +
+  geom_point()
+
 ```
 
-I'm some filler text, you should replace me with more meaningful text...
+Correlation chunk:
 
 ```{r cor-star}
 
-```
-Add your explanation here—what did you notice?
+star_data %>%
+  summarize(r = cor(x, y))
 
+```
+
+The Pearson correlation coefficient between x and y for the star dataset is approximately -0.06. This is near zero, indicating that there is essentially no linear relationship between x and y. Although the scatterplot forms a star shape visually, the points do not follow a linear pattern. This result is much like that of the dino plot: interesting shapes do NOT equal correlation.
 
 ### Exercise 4
 
