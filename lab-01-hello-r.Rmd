@@ -65,7 +65,7 @@ star_data %>%
   summarize(r = cor(x, y))
 ```
 
-The Pearson correlation coefficient between x and y for the star dataset is approximately -0.06. This is near zero, indicating that there is essentially no linear relationship between x and y. Although the scatterplot forms a star shape visually, the points do not follow a linear pattern. This result is much like that of the dino plot: interesting shapes do NOT equal correlation.
+The Pearson correlation coefficient between x and y for the star dataset is approximately -0.06, which is near zero. This again indicate that there is essentially no linear relationship between x and y. Although the scatterplot forms a star shape visually, the points do not follow a linear pattern. This result is much like that of the dino plot: interesting shapes do NOT equal correlation.
 
 ### Exercise 4
 
@@ -86,13 +86,29 @@ circle_data %>%
   summarize(r = cor(x, y))
 ```
 
-The Pearson correlation coefficient is approximately -0.07, which is near zero, similar to the dino and star datasets. This again indicates that there is essentially no linear relationship between x and y. The datapoints form a distinct circular shape, but there is no linear correlation to speak of. That said, there are three outliers present in this dataset (a feature missing from both the dino and star datasets).
+The Pearson correlation coefficient is approximately -0.07, which is near zero, similar to the dino and star datasets. This indicates that there is essentially no linear relationship between x and y. The datapoints form a distinct circular shape, but there is no linear correlation to speak of. That said, there are three outliers present in this dataset (a feature missing from both the dino and star datasets).
 
 ### Exercise 5
 
-This is your final exercise! Add code and narrative as needed. Be creative and show off what you’ve learned so far.
-Add code and narrative as needed.
+Plotting all datasets at once with faceting:
 
-To add additional R chunks, you can either type the backticks, curly braces, and the letter `r`, or use the "Insert Chunk" button above (the green C+ icon). Have fun!
+```{r plot-all-datasets}
+library(ggplot2)
+library(dplyr)
 
+ggplot(datasaurus_dozen, aes(x = x, y = y, color = dataset)) +
+  geom_point() +
+  facet_wrap(~dataset, ncol = 3) +
+  theme(legend.position = "none")
+```
 
+Calculating correlations for all datasets:
+
+```{r cor-all-datasets}
+datasaurus_dozen %>%
+  group_by(dataset) %>%
+  summarize(r = cor(x, y)) %>%
+  print(n = 13)
+```
+
+The faceted scatterplots display all datasets from datasaurus_dozen. Each dataset has a unique pattern, yet many of the correlation coefficients are near zero. This illustrates that the Pearson correlation coefficient measures linear relationships only, and can be near zero even when datasets have "cool" (dino) or "boring" (dots) shapes/orientations.
