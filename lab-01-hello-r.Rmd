@@ -44,6 +44,7 @@ dino_data %>%
 ```
 Once you’ve cleaned up the text, add your own explanation or observations here!
 
+The Pearson correlation coefficient between x and y for the dino dataset is approximately -0.06, which is near zero. This indicates that there is essentially no linear relationship between x and y. This makes sense because correlations measure linear relationships, not the "cool-ness" of the shape datapoints make. 
 
 ### Exercise 3
 
